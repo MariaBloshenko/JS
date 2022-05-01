@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="">
+    <title>Objects and arrays</title>
+</head>
+<body>
+<main>
+
+</main>
+
+<script>
+
+    let myFlat = {}
+
+    let kitchen = {}
+
+    kitchen.diningZone = {}
+    kitchen.diningZone.furniture = []
+    kitchen.diningZone.furniture [0] = {type: 'table', color: 'graphite'}
+    kitchen.diningZone.furniture [1] = {type: 'bar', color: 'white'}
+    kitchen.diningZone.furniture [2] = {type: 'chairs', color: 'graphite'}
+    kitchen.diningZone.appliances = 'TV'
+
+    kitchen.restZone = {}
+    kitchen.restZone.furniture = []
+    kitchen.restZone.furniture [0] = {type: 'island cuisine', color: 'white'}
+    kitchen.restZone.furniture [1] = {}
+    kitchen.restZone.furniture.a = {type: 'high chair', color: 'graphite'}
+    kitchen.restZone.furniture.b = {type: 'high chair', color: 'graphite'}
+
+    kitchen.hotZone = {}
+    kitchen.hotZone.furniture = {type: 'furniture set', color: 'pearl'}
+    kitchen.hotZone.appliances = ['stove', 'oven', 'microwave', 'grill', 'dishwasher', 'water filtration system', 'multicooker', 'coffee machine']
+
+    let cabinet = {}
+
+    cabinet.furniture = []
+    cabinet.furniture [0] = {type: 'sofa', color: 'beige'}
+    cabinet.furniture [1] = {type: 'chair', color: 'graphite'}
+
+    let bedroom ={}
+
+    bedroom.appliances = 'TV'
+
+    bedroom.furniture = []
+    bedroom.furniture [0] = {type: 'closet', color: 'black'}
+    bedroom.furniture [1] = {type: 'bed', color: 'black'}
+    bedroom.furniture [2] = {type: 'dresser', color: 'black with beige'}
+    bedroom.furniture [3] = {type: 'dressing table', color: 'black with beige'}
+    bedroom.furniture [4] = {type: 'mirror'}
+    bedroom.furniture [5] = {type: 'pouf', color: 'beige'}
+    bedroom.furniture [6] = {type: 'bedside tables', color: 'black'}
+
+    let livingRoom ={}
+
+    livingRoom.furniture = []
+    livingRoom.furniture [0] = {type: 'sofa', color: 'blue'}
+    livingRoom.furniture [1] = {type: 'furniture set', color: 'white with black'}
+
+    livingRoom.appliances = []
+    livingRoom.appliances [0] = 'clock'
+    livingRoom.appliances [1] = 'TV'
+    livingRoom.appliances [2] = 'PlayStation'
+
+    let kidsRoom ={}
+
+    kidsRoom.furniture =[]
+    kidsRoom.furniture[0] = {type: 'closet', material: 'wood with glass', color: 'white'}
+    kidsRoom.furniture[1] = {type: 'shelves', material: 'glass'}
+
+    myFlat.room = [kitchen, bedroom, kidsRoom, cabinet, livingRoom]
+    console.log(myFlat)
+
+</script>
+</body>
+</html>
