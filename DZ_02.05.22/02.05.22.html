@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="">
+    <title>Phone book</title>
+<style>
+    .contactPhoneStyle {margin-top: 10px}
+    .contactButtonStyle {margin-top: 10px}
+    #listContacts {list-style-type: none}
+</style>
+</head>
+<body>
+
+<ul id="listContacts"></ul>
+
+<div id="formAdd">
+    <h2>Simple phone book</h2>
+<div>
+    <label for="txtName">Name </label><input type="text" name="name" id="txtName">
+</div>
+<div class="contactPhoneStyle">
+    <label for="txtPhone">Phone number </label><input type="text" name="name" id="txtPhone">
+</div>
+<div class="contactButtonStyle">
+    <input type="button" id="btnAddContact" value="Добавить">
+</div>
+</div>
+
+<script>
+
+    let contacts = []
+    let listContacts = document.getElementById("listContacts")
+
+    function renderContacts() {
+        listContacts.innerHTML = ''
+        for(let i = 0; i < contacts.length; i++){
+            let li = document.createElement("li")
+
+            let spanName = document.createElement("span")
+            spanName.innerText = contacts[i].name
+            spanName.className = 'contactName'
+
+            let spanPhone = document.createElement("span")
+            spanPhone.innerText = contacts[i].phone
+            spanPhone.className = 'contactPhone'
+
+            li.appendChild(spanName)
+            li.appendChild(spanPhone)
+
+            listContacts.appendChild(li)
+        }
+    }
+    renderContacts()
+
+    document.getElementById('btnAddContact').onclick = function (){
+        contacts.push(
+            {
+                name: document.getElementById('txtName').value,
+                phone: document.getElementById('txtPhone').value,
+            })
+        renderContacts()
+    }
+
+</script>
+</body>
+</html>

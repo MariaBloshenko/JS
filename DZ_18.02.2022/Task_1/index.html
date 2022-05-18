@@ -4,12 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="MyJavaScript.js">
-    <title>DZ_18.02.2022_Task_1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Task 1</title>
 </head>
 <body>
 
-<script src="MyJavaScript.js"></script>
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="mb-3">
+                <label for="userAge" class="form-label">Age control</label>
+                <input type="number" id="userAge" class="form-control">
+            </div>
+            <button type="button" id="myBtn" class="btn btn-primary">Нажми меня!</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="alert alert-primary" role="alert" id="result" style="margin-top: 10px"></div>
+    </div>
+</div>
+
+<script>
+    /* Задание 1:
+Запросить у пользователя его возраст и определить, кем он
+является: ребенком (0–2), подростком (12–18), взрослым
+(18_60) или пенсионером (60– ...).*/
+
+    console.log('Start Script')
+    let result = document.getElementById("result")
+    document.getElementById("myBtn").onclick = function () {
+        let userAge = document.getElementById("userAge").value
+        console.log("User's age - " + userAge)
+        if (userAge < 2) {
+            result.innerText = "Вы еще маленький ребенок!"
+        } else if (userAge >= 12 && userAge <= 18) {
+            result.innerText = "Вы бунтующий подросток!"
+        } else if (userAge >= 18 && userAge <= 60) {
+            result.innerText = "Вы взрослый и сознательный человек!"
+        } else if (userAge > 60) {
+            result.innerText = "Вы в расцвете сил!"
+        }
+    }
+    console.log('End Script')
+
+</script>
 </body>
 </html>
