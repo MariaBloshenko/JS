@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Сброс фильтров по коллекции</title>
+</head>
+<body>
+<aside id="filters"></aside>
+<div id="products"></div>
+
+<script src="_lib/guid.js"></script>
+
+<script>
+
+  let hairViewCosmetics = ['Профессиональная косметика', 'Масс маркет косметика']
+
+  let products = [
+    {id: generateUUID(), name: "Profi style", view: hairViewCosmetics[1]},
+    {id: generateUUID(), name: "Nook Organic", view: hairViewCosmetics[0]},
+    {id: generateUUID(), name: "pH laboratories", view: hairViewCosmetics[0]},
+    {id: generateUUID(), name: "Vichy Dercos Anti-Dandruff Advanced Action", view: hairViewCosmetics[1]}
+  ]
+
+  function renderFilters() {
+    let asize = document.getElementById("filters")
+    let ulS = document.createElement("ul")
+
+    let liDefault = document.createElement("li")
+    let inp = document.createElement("input")
+    inp.type = 'radio'
+    inp.name = 'hairViewCosmetics'
+    inp.value = 'all'
+    inp.checked = true
+    inp.onchange = (ev) => {
+      console.log(ev.target.value)
+      filteredBy['hairViewCosmeticsOne'] = null
+      renderProducts()
+    }
+
+    let labelDefault = document.createElement("label")
+    labelDefault.innerText = "Show all"
+    liDefault.appendChild(inp)
+    liDefault.appendChild(labelDefault)
+    ulS.appendChild(liDefault)
+
+    hairViewCosmetics.map(el=> {
+      let li = document.createElement("li")
+      let inp = document.createElement("input")
+      inp.type = 'radio'
+      inp.name = 'hairViewCosmetics'
+      inp.value = el
+      inp.onchange = (ev) => {
+        console.log(ev.target.value)
+        filteredBy['hairViewCosmeticsOne'] = ev.target.value
+        renderProducts()
+      }
+
+      let label = document.createElement("label")
+      label.innerText = el
+
+      li.appendChild(inp)
+      li.appendChild(label)
+
+      ulS.appendChild(li)
+    })
+    asize.appendChild(ulS)
+  }
+  renderFilters()
+
+  let filteredBy = []
+
+
+  function  renderProducts(){
+    let main = document.getElementById("products")
+    let ul = document.createElement("ul")
+    products.map(product => {
+
+      if(filteredBy['hairViewCosmeticsOne']) {
+        if(filteredBy['hairViewCosmeticsOne'] !== product.view) return
+      }
+
+      let li = document.createElement("li")
+      li.dataset.id = product.id
+      li.innerText = product.name
+      ul.appendChild(li)
+    })
+    main.innerHTML = ''
+    main.appendChild(ul)
+  }
+  renderProducts()
+
+
+</script>
+</body>
+</html>
