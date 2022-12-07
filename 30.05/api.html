@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charSet="UTF-8">
+    <title>Ajax</title>
+    <style>
+        #main img {
+            width: 400px;
+            animation-name: Appearance;
+            animation-duration: 3s;
+            animation-timing-function: cubic-bezier(.1, -6, .2, 8);
+        }
+
+        @-webkit-keyframes Appearance {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes Appearance {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes Appearance {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<button id="btnReload">Нажми меня!</button>
+<div id="main"></div>
+
+<script>
+    let mainUl = document.getElementById('main')
+
+    function buildPic(randomPic) {
+        let img = new Image();
+        img.src = randomPic['image']
+        img.onload = function () {
+            mainUl.innerHTML = ''
+            mainUl.appendChild(img)
+        }
+    }
+
+
+    function apiGetRandomPic() {
+        mainUl.innerHTML = ''
+        mainUl.innerText = 'Loading...'
+        fetch('https://yesno.wtf/api')
+            .then(res => res.json())
+            .then(randomPic => {
+                console.log(randomPic)
+                buildPic(randomPic)
+            })
+            .catch(err => {
+                console.log('Err')
+                console.log(err)
+            })
+    }
+
+    apiGetRandomPic()
+
+    document.getElementById('btnReload').onclick = function () {
+        apiGetRandomPic()
+    }
+
+</script>
+
+</body>
+</html>
